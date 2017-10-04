@@ -1,0 +1,129 @@
+#!/bin/bash
+
+FLAG=0
+MBOXES="New mail:\n"
+
+# Gmail Inbox block
+G_INBOX='/home/gramanas/.mail/gmail/.Inbox/new/'
+G_INBOX_stat='/home/gramanas/.mail/gmail/.InboxStat'
+
+G_INBOX_NEW_STAT=`[ "$(ls -A $G_INBOX)" ] && echo 1 || echo 0`
+
+if [ "$G_INBOX_NEW_STAT" == 1 ]
+then
+    MBOXES=$MBOXES"    --> gmail/.Inbox [$(ls -1 $G_INBOX | wc -l)]\n"
+    FLAG=1
+    # do whatever you want to do with the directory.
+    # update the G_INBOX_stat
+    echo $G_INBOX_NEW_STAT > $G_INBOX_stat
+fi
+
+# arch block
+# ARCH='/home/gramanas/.mail/gmail/.arch/new/'
+# ARCH_stat='/home/gramanas/.mail/gmail/.archStat'
+
+# ARCH_NEW_STAT=`[ "$(ls -A $ARCH)" ] && echo 1 || echo 0`
+
+# if [ "$ARCH_NEW_STAT" == 1 ]
+# then
+#     MBOXES=$MBOXES"    --> gmail/.arch [$(ls -1 $ARCH | wc -l)]\n"
+#     FLAG=1
+#     # do whatever you want to do with the directory.
+#     # update the ARCH_stat
+#     echo $ARCH_NEW_STAT > $ARCH_stat
+# fi
+
+#Emacs block
+# EMACS='/home/gramanas/.mail/gmail/.emacs/new/'
+# EMACS_stat='/home/gramanas/.mail/gmail/.emacsStat'
+
+# EMACS_NEW_STAT=`[ "$(ls -A $EMACS)" ] && echo 1 || echo 0`
+
+# if [ "$EMACS_NEW_STAT" == 1 ]
+# then
+#     MBOXES=$MBOXES"    --> gmail/.emacs [$(ls -1 $EMACS | wc -l)]\n"
+#     FLAG=1
+#     # do whatever you want to do with the directory.
+#     # update the EMACS_stat
+#     echo $EMACS_NEW_STAT > $EMACS_stat
+# fi
+
+#Fotomada block
+FOTOMADA='/home/gramanas/.mail/gmail/.Fotomada/new/'
+FOTOMADA_stat='/home/gramanas/.mail/gmail/.FotomadaStat'
+
+FOTOMADA_NEW_STAT=`[ "$(ls -A $FOTOMADA)" ] && echo 1 || echo 0`
+
+if [ "$FOTOMADA_NEW_STAT" == 1 ]
+then
+    MBOXES=$MBOXES"    --> gmail/.Fotomada [$(ls -1 $FOTOMADA | wc -l)]\n"
+    FLAG=1
+    # do whatever you want to do with the directory.
+    # update the FOTOMADA_stat
+    echo $FOTOMADA_NEW_STAT > $FOTOMADA_stat
+fi
+
+#Weddings block
+WEDDINGS='/home/gramanas/.mail/gmail/.Weddings/new/'
+WEDDINGS_stat='/home/gramanas/.mail/gmail/.WeddingsStat'
+
+WEDDINGS_NEW_STAT=`[ "$(ls -A $WEDDINGS)" ] && echo 1 || echo 0`
+
+if [ "$WEDDINGS_NEW_STAT" == 1 ]
+then
+    MBOXES=$MBOXES"    --> gmail/.Weddings [$(ls -1 $WEDDINGS | wc -l)]\n"
+    FLAG=1
+    # do whatever you want to do with the directory.
+    # update the WEDDINGS_stat
+    echo $WEDDINGS_NEW_STAT > $WEDDINGS_stat
+fi
+
+#Texlive block
+# TEXLIVE='/home/gramanas/.mail/gmail/.TeX_live/new/'
+# TEXLIVE_stat='/home/gramanas/.mail/gmail/.TeX_liveStat'
+
+# TEXLIVE_NEW_STAT=`[ "$(ls -A $TEXLIVE)" ] && echo 1 || echo 0`
+
+# if [ "$TEXLIVE_NEW_STAT" == 1 ]
+# then
+#     MBOXES=$MBOXES"    --> gmail/.TeX_live [$(ls -1 $TEXLIVE | wc -l)]\n"
+#     FLAG=1
+#     # do whatever you want to do with the directory.
+#     # update the TEXLIVE_stat
+#     echo $TEXLIVE_NEW_STAT > $TEXLIVE_stat
+# fi
+
+#Mixxx block
+MIXXX='/home/gramanas/.mail/gmail/.Mixxx/new/'
+MIXXX_stat='/home/gramanas/.mail/gmail/.MixxxStat'
+
+MIXXX_NEW_STAT=`[ "$(ls -A $MIXXX)" ] && echo 1 || echo 0`
+
+if [ "$MIXXX_NEW_STAT" == 1 ]
+then
+    MBOXES=$MBOXES"    --> gmail/.Mixxx [$(ls -1 $MIXXX | wc -l)]\n"
+    FLAG=1
+    # do whatever you want to do with the directory.
+    # update the MIXXX_stat
+    echo $MIXXX_NEW_STAT > $MIXXX_stat
+fi
+
+#Webmail block
+W_INBOX='/home/gramanas/.mail/webmail/Inbox/new/'
+W_INBOX_stat='/home/gramanas/.mail/webmail/InboxStat'
+
+W_INBOX_NEW_STAT=`[ "$(ls -A $W_INBOX)" ] && echo 1 || echo 0`
+
+if [ "$W_INBOX_NEW_STAT" == 1 ]
+then
+    MBOXES=$MBOXES"    --> webmail/Inbox [$(ls -1 $W_INBOX | wc -l)]\n"
+    FLAG=1
+    # do whatever you want to do with the directory.
+    # update the W_INBOX_stat
+    echo $W_INBOX_NEW_STAT > $W_INBOX_stat
+fi
+
+if [ $FLAG == 1 ]
+then
+    printf "$(echo $MBOXES)"
+fi
