@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "P:$(pacman -Q | wc -l) E:$(pacman -Qe | wc -l) D:$(pacman -Qd | wc -l) U:$(pacman -Qu | wc -l)"

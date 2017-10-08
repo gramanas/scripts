@@ -1,0 +1,7 @@
+#!/bin/bash
+# Random picture from wallpaper folder... ez
+#files=(/home/gramanas/Pictures/wallpapers/*)
+#MYFILE=`printf "%s\n" "${files[RANDOM % ${#files[@]}]}"`
+MYFILE=`find Pictures/wallpapers/ | tail +2 | sort -R | head -1`
+cp $MYFILE /home/gramanas/.config/wallpaper.png
+feh --bg-max /home/gramanas/.config/wallpaper.png

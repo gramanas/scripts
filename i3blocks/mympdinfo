@@ -1,0 +1,20 @@
+#!/bin/bash
+state=$(mpc -p 5555 | head -2 | tail -1 | awk '{print $1}')
+if [[ "$state" == "[playing]" ]]; then
+   song=$(mpc -p 5555 | head -1)
+   time=$(mpc -p 5555 | head -2 | tail -1 | awk '{ print $3 }')
+
+   echo $song "//" $time
+elif [[ "$state" == "[paused]" ]]; then
+    time=$(date +%s)
+    if [[ $(( $time  % 3 )) == 0 ]]; then
+        fancy="m"
+    elif [[ $(( $time % 2 )) == 0 ]]; then
+        fancy="mp"
+    else
+        fancy="mpd"
+    fi    
+    echo $fancy "- paused"
+elif [[ "$state" =~ "volume" ]]; then
+    echo "mpd - stopped"
+fi
